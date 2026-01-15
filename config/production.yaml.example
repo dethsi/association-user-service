@@ -1,0 +1,37 @@
+# Configuration production - Template
+# Copier ce fichier vers production.yaml et remplir les valeurs
+# Les variables ${VAR} sont remplacées par les variables d'environnement
+
+server:
+  port: ${PORT}
+  appUrl: ${APP_URL}
+
+database:
+  host: ${DB_HOST}
+  port: ${DB_PORT}
+  username: ${DB_USERNAME}
+  password: ${DB_PASSWORD}
+  name: ${DB_NAME}
+  synchronize: false
+  logging: false
+
+rabbitmq:
+  url: ${RABBITMQ_URL}
+  queue: user_queue
+
+jwt:
+  secret: ${JWT_SECRET}
+  expiresIn: 15m
+  refreshSecret: ${JWT_REFRESH_SECRET}
+  refreshExpiresIn: 7d
+
+rateLimit:
+  short:
+    ttl: 1000
+    limit: 3
+  medium:
+    ttl: 10000
+    limit: 20
+  long:
+    ttl: 60000
+    limit: 100

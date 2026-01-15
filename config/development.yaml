@@ -1,0 +1,36 @@
+# Configuration développement - Ce fichier peut être committé
+# Ne jamais mettre de vrais secrets ici
+
+server:
+  port: 3001
+  appUrl: http://localhost:3000
+
+database:
+  host: localhost
+  port: 5433
+  username: postgres
+  password: postgres
+  name: user_service
+  synchronize: true
+  logging: true
+
+rabbitmq:
+  url: amqp://guest:guest@localhost:5672
+  queue: user_queue
+
+jwt:
+  secret: dev-jwt-secret-change-in-production
+  expiresIn: 15m
+  refreshSecret: dev-refresh-secret-change-in-production
+  refreshExpiresIn: 7d
+
+rateLimit:
+  short:
+    ttl: 1000
+    limit: 3
+  medium:
+    ttl: 10000
+    limit: 20
+  long:
+    ttl: 60000
+    limit: 100
